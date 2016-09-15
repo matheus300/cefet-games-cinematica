@@ -2,6 +2,7 @@ package br.cefetmg.games.movement.behavior;
 
 import br.cefetmg.games.movement.Direcionamento;
 import br.cefetmg.games.movement.Pose;
+import com.badlogic.gdx.math.Vector3;
 
 /**
  *
@@ -24,16 +25,11 @@ public class Fugir extends Algoritmo {
     @Override
     public Direcionamento guiar(Pose agente) {
         Direcionamento output = new Direcionamento();
+        Vector3 auxiliar = new Vector3(alvo.getObjetivo());
+        output.velocidade = auxiliar.sub(agente.posicao);
+        output.velocidade.setLength(maxVelocidade);
+        output.velocidade.scl(-1);
 
-        // Calcula a direção para onde o agente deve ir
-        // Input: a posicao do objetivo (this.alvo) e deste agente
-        // ..
-        // ..
-        // ..
-        // ..
-        // Output: vetor velocidade (apontando na direção encontrada) 
-        //         limitado pela maxVelocidade (tangencial)
-        // PS: não é necessário definir a rotação
         return output;
     }
 

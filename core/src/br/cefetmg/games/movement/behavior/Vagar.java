@@ -2,6 +2,7 @@ package br.cefetmg.games.movement.behavior;
 
 import br.cefetmg.games.movement.Direcionamento;
 import br.cefetmg.games.movement.Pose;
+import com.badlogic.gdx.math.Vector3;
 
 /**
  *
@@ -35,24 +36,9 @@ public class Vagar extends Algoritmo {
     @Override
     public Direcionamento guiar(Pose agente) {
         Direcionamento output = new Direcionamento();
+        output.velocidade.set(agente.getOrientacaoComoVetor().setLength(maxVelocidade));
+        output.rotacao = randomBinomial()*maxAngular*2;
 
-        // Input: pose atual
-        // ..
-        // ..
-        // ..
-        // ..
-        // Output: (a) uma velocidade angular no sentido horário ou anti* 
-        //             (output.rotacao), escalado pela máxima velocidade angular
-        //             (maxAngular)
-        //         (b) o vetor velocidade com tamanho maxVelocidade, apontando 
-        //             na direção da orientação do agente (agente.orientacaoVetor())
-        //
-        // *: a função randomBinomial retorna um número aleatório próximo que
-        //    pode ir de [-1,+1], mas com alta concentração de números próximos
-        //    de 0 (tipo uma curva normal com o centro em 0).
-        //    Ela pode ser útil para se encontrar uma velocidade angular 
-        //    (output.angular).
-        
         return output;
     }
 
